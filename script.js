@@ -5,11 +5,11 @@ class Player {
     this.x = 0;
   }
   MoveDown() {
-    this.reference.style.marginTop = '20px';
+    this.reference.style.marginTop = (this.y + 20).toString() + 'px';
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveUp() {
-    this.reference.style.marginTop = '0px';
+    this.reference.style.marginTop = (this.y - 20).toString() + 'px';
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveRight() {
@@ -27,15 +27,15 @@ const player = new Player();
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
     player.MoveUp();
-    console.log('y =', player.y);
+    console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowDown') {
     player.MoveDown();
-    console.log('y =', player.y);
+    console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowLeft') {
     player.MoveLeft();
-    console.log('x =', player.x);
+    console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
     player.MoveRight();
-    console.log('x =', player.x);
+    console.log('x =', player.x, typeof player.x);
   }
 });
