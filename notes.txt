@@ -1,0 +1,6 @@
+Sizes:
+  playzone = 500
+  player = 32
+
+Calculation:
+  (500 - 32) = 468 = (4 * 9 * 13) = (2 * 2 * 3 * 3 * 13)
