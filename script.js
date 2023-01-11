@@ -13,11 +13,11 @@ class Player {
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveRight() {
-    this.reference.style.marginLeft = '20px';
+    this.reference.style.marginLeft = (this.x + 20).toString() + 'px';
     this.x = Number.parseInt(this.reference.style.marginLeft);
   }
   MoveLeft() {
-    this.reference.style.marginLeft = '0px';
+    this.reference.style.marginLeft = (this.x - 20).toString() + 'px';
     this.x = Number.parseInt(this.reference.style.marginLeft);
   }
 }
