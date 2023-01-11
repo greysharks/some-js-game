@@ -1,23 +1,24 @@
 class Player {
   constructor() {
     this.reference = document.getElementById('player');
-    this.y = 0;
+    this.step = 20;
     this.x = 0;
+    this.y = 0;
   }
   MoveDown() {
-    this.reference.style.marginTop = (this.y + 20).toString() + 'px';
+    this.reference.style.marginTop = (this.y + this.step).toString() + 'px';
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveUp() {
-    this.reference.style.marginTop = (this.y - 20).toString() + 'px';
+    this.reference.style.marginTop = (this.y - this.step).toString() + 'px';
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveRight() {
-    this.reference.style.marginLeft = (this.x + 20).toString() + 'px';
+    this.reference.style.marginLeft = (this.x + this.step).toString() + 'px';
     this.x = Number.parseInt(this.reference.style.marginLeft);
   }
   MoveLeft() {
-    this.reference.style.marginLeft = (this.x - 20).toString() + 'px';
+    this.reference.style.marginLeft = (this.x - this.step).toString() + 'px';
     this.x = Number.parseInt(this.reference.style.marginLeft);
   }
 }
