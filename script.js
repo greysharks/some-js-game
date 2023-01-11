@@ -8,6 +8,12 @@ class Player {
   MoveUp() {
     this.reference.style.marginTop = '0px';
   }
+  MoveRight() {
+    this.reference.style.marginLeft = '20px';
+  }
+  MoveLeft() {
+    this.reference.style.marginLeft = '0px';
+  }
 }
 
 const player = new Player();
@@ -20,8 +26,10 @@ document.body.addEventListener('keydown', function (ev) {
     player.MoveDown();
     console.log('Down');
   } else if (ev.key === 'ArrowLeft') {
+    player.MoveLeft();
     console.log('Left');
   } else if (ev.key === 'ArrowRight') {
+    player.MoveRight();
     console.log('Right');
   }
 });
