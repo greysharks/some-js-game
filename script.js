@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this.reference = document.getElementById('player');
-    this.step = 20;
+    this.step = 26;
     this.x = 0;
     this.y = 0;
   }
