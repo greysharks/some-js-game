@@ -5,20 +5,20 @@ class Player {
     this.x = 0;
     this.y = 0;
   }
-  MoveDown() {
-    this.reference.style.marginTop = (this.y + this.step).toString() + 'px';
-    this.y = Number.parseInt(this.reference.style.marginTop);
-  }
   MoveUp() {
     this.reference.style.marginTop = (this.y - this.step).toString() + 'px';
     this.y = Number.parseInt(this.reference.style.marginTop);
   }
-  MoveRight() {
-    this.reference.style.marginLeft = (this.x + this.step).toString() + 'px';
-    this.x = Number.parseInt(this.reference.style.marginLeft);
+  MoveDown() {
+    this.reference.style.marginTop = (this.y + this.step).toString() + 'px';
+    this.y = Number.parseInt(this.reference.style.marginTop);
   }
   MoveLeft() {
     this.reference.style.marginLeft = (this.x - this.step).toString() + 'px';
+    this.x = Number.parseInt(this.reference.style.marginLeft);
+  }
+  MoveRight() {
+    this.reference.style.marginLeft = (this.x + this.step).toString() + 'px';
     this.x = Number.parseInt(this.reference.style.marginLeft);
   }
 }
