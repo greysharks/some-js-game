@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.playzone {
+  border: 2px solid black;
+  height: 500px;
+  width: 500px;
+}
+
+.player {
+  background-color: red;
+  height: 32px;
+  width: 32px;
+}
