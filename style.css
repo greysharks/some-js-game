@@ -3,13 +3,13 @@ body {
   justify-content: center;
 }
 
-.playzone {
+#playzone {
   border: 2px solid black;
   height: 500px;
   width: 500px;
 }
 
-.player {
+#player {
   background-color: red;
   height: 32px;
   width: 32px;
