@@ -27,16 +27,24 @@ const player = new Player();
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
-    player.MoveUp();
+    if (player.y > 0) {
+      player.MoveUp();
+    }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowDown') {
-    player.MoveDown();
+    if (player.y < 468) {
+      player.MoveDown();
+    }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowLeft') {
-    player.MoveLeft();
+    if (player.x > 0) {
+      player.MoveLeft();
+    }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
-    player.MoveRight();
+    if (player.x < 468) {
+      player.MoveRight();
+    }
     console.log('x =', player.x, typeof player.x);
   }
 });
