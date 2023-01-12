@@ -32,7 +32,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowDown') {
-    if (player.y < 468) {
+    if (player.y < 468) {  // 468 = (sizeOfPlayzone - sizeOfPlayer)
       player.MoveDown();
     }
     console.log('y =', player.y, typeof player.y);
@@ -42,7 +42,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
-    if (player.x < 468) {
+    if (player.x < 468) {  // 468 = (sizeOfPlayzone - sizeOfPlayer)
       player.MoveRight();
     }
     console.log('x =', player.x, typeof player.x);
