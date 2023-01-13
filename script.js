@@ -23,7 +23,26 @@ class Player {
   }
 }
 
+class Coin {
+  constructor(x = 0, y = 0) {
+    this.x = x;
+    this.y = y;
+    this.size = 12;
+  }
+  Render() {
+    const coinDiv = document.createElement('div');
+    coinDiv.style.backgroundColor = 'black';
+    coinDiv.style.width = this.size + 'px';
+    coinDiv.style.height = this.size + 'px';
+    coinDiv.style.marginTop = '0px';
+    coinDiv.style.marginLeft = '0px';
+    document.getElementById('playzone').appendChild(coinDiv);
+  }
+}
+
 const player = new Player();
+const coin = new Coin(3, 5);
+coin.Render();
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
