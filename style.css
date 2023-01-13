@@ -8,10 +8,12 @@ body {
   border: 2px solid black;
   height: 500px;
   width: 500px;
+  position: relative;
 }
 
 #player {
   background-color: red;
   height: 32px;
   width: 32px;
+  position: absolute;
 }
