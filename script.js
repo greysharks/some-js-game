@@ -43,8 +43,7 @@ class Coin {
     } else {
       this.y = y;
     }
-  }
-  Render() {
+
     const coinDiv = document.createElement('div');
     coinDiv.style.backgroundColor = 'black';
     coinDiv.style.width = this.size + 'px';
@@ -56,8 +55,7 @@ class Coin {
 }
 
 const player = new Player();
-const coin = new Coin();
-coin.Render();
+const coin = new Coin(50, 60);
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
