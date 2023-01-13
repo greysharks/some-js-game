@@ -25,23 +25,38 @@ class Player {
 
 class Coin {
   constructor(x = 0, y = 0) {
-    this.x = x;
-    this.y = y;
     this.size = 12;
+    this.maxLength = 500 - this.size;
+
+    if (x < 0) {
+      this.x = 0;
+    } else if (x > this.maxLength) {
+      this.x = this.maxLength;
+    } else {
+      this.x = x;
+    }
+
+    if (y < 0) {
+      this.y = 0;
+    } else if (y > this.maxLength) {
+      this.y - this.maxLength;
+    } else {
+      this.y = y;
+    }
   }
   Render() {
     const coinDiv = document.createElement('div');
     coinDiv.style.backgroundColor = 'black';
     coinDiv.style.width = this.size + 'px';
     coinDiv.style.height = this.size + 'px';
-    coinDiv.style.marginTop = '0px';
-    coinDiv.style.marginLeft = '0px';
+    coinDiv.style.marginTop = this.y + 'px';
+    coinDiv.style.marginLeft = this.x + 'px';
     document.getElementById('playzone').appendChild(coinDiv);
   }
 }
 
 const player = new Player();
-const coin = new Coin(3, 5);
+const coin = new Coin();
 coin.Render();
 
 document.body.addEventListener('keydown', function (ev) {
