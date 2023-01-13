@@ -24,24 +24,23 @@ class Player {
 }
 
 class Coin {
-  constructor(x = 0, y = 0) {
+  constructor(playerStep) {
     this.size = 12;
     this.maxLength = 500 - this.size;
 
-    if (x < 0) {
-      this.x = 0;
-    } else if (x > this.maxLength) {
+    // Generate two different coefficients for x and y with values between 0 and 18 (inclusively)
+    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
+    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
+
+    this.x = playerStep * this.coefficientForX;
+    this.y = playerStep * this.coefficientForY;
+
+    if (this.x > this.maxLength) {
       this.x = this.maxLength;
-    } else {
-      this.x = x;
     }
 
-    if (y < 0) {
-      this.y = 0;
-    } else if (y > this.maxLength) {
-      this.y - this.maxLength;
-    } else {
-      this.y = y;
+    if (this.y > this.maxLength) {
+      this.y = this.maxLength;
     }
 
     const coinDiv = document.createElement('div');
@@ -55,7 +54,7 @@ class Coin {
 }
 
 const player = new Player();
-const coin = new Coin(50, 60);
+const coin = new Coin(player.step);
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
