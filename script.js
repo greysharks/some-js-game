@@ -1,7 +1,7 @@
 class Playzone {
   constructor() {
     this.reference = document.getElementById('playzone');
-    this.size = 500;
+    this.size = 640;
 
     this.reference.style.height = this.size + 'px';
     this.reference.style.width = this.size + 'px';
