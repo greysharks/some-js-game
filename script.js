@@ -12,8 +12,12 @@ class Player {
   constructor() {
     this.reference = document.getElementById('player');
     this.step = 26;
+    this.size = 32;
     this.x = 0;
     this.y = 0;
+
+    this.reference.style.height = this.size + 'px';
+    this.reference.style.width = this.size + 'px';
   }
   MoveUp() {
     this.reference.style.marginTop = (this.y - this.step).toString() + 'px';

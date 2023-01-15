@@ -11,7 +11,5 @@ body {
 
 #player {
   background-color: red;
-  height: 32px;
-  width: 32px;
   position: absolute;
 }
