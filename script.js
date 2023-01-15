@@ -1,3 +1,13 @@
+class Playzone {
+  constructor() {
+    this.reference = document.getElementById('playzone');
+    this.size = 500;
+
+    this.reference.style.height = this.size + 'px';
+    this.reference.style.width = this.size + 'px';
+  }
+}
+
 class Player {
   constructor() {
     this.reference = document.getElementById('player');
@@ -53,6 +63,7 @@ class Coin {
   }
 }
 
+const playzone = new Playzone();
 const player = new Player();
 const coin = new Coin(player.step);
 
