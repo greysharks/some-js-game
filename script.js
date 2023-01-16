@@ -11,7 +11,7 @@ class Playzone {
 class Player {
   constructor() {
     this.reference = document.getElementById('player');
-    this.step = 26;
+    this.step = 32;
     this.size = 32;
     this.x = 0;
     this.y = 0;
@@ -38,9 +38,9 @@ class Player {
 }
 
 class Coin {
-  constructor(playerStep) {
+  constructor(playzoneSize, playerStep) {
     this.size = 12;
-    this.maxLength = 500 - this.size;
+    this.maxLength = playzoneSize - this.size;
 
     // Generate two different coefficients for x and y with values between 0 and 18 (inclusively)
     this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
@@ -69,7 +69,7 @@ class Coin {
 
 const playzone = new Playzone();
 const player = new Player();
-const coin = new Coin(player.step);
+const coin = new Coin(playzone.size, player.step);
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
@@ -78,7 +78,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowDown') {
-    if (player.y < 468) {  // 468 = (sizeOfPlayzone - sizeOfPlayer)
+    if (player.y < (playzone.size - player.size)) {
       player.MoveDown();
     }
     console.log('y =', player.y, typeof player.y);
@@ -88,7 +88,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
-    if (player.x < 468) {  // 468 = (sizeOfPlayzone - sizeOfPlayer)
+    if (player.x < (playzone.size - player.size)) {
       player.MoveRight();
     }
     console.log('x =', player.x, typeof player.x);
