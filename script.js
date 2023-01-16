@@ -42,9 +42,9 @@ class Coin {
     this.size = 12;
     this.maxLength = playzoneSize - this.size;
 
-    // Generate two different coefficients for x and y with values between 0 and 18 (inclusively)
-    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
-    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
+    // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
+    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
+    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
 
     this.x = playerStep * this.coefficientForX;
     this.y = playerStep * this.coefficientForY;
