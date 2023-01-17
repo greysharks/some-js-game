@@ -1,10 +1,10 @@
 class Playzone {
   constructor() {
-    this.reference = document.getElementById('playzone');
     this.size = 640;
     this.player = new Player(this.size);
     this.coin = new Coin(this.size, this.player.size);
-
+    
+    this.reference = document.getElementById('playzone');
     this.reference.style.height = this.size + 'px';
     this.reference.style.width = this.size + 'px';
   }
@@ -17,13 +17,13 @@ class Playzone {
 
 class Player {
   constructor(playzoneSize) {
-    this.reference = document.getElementById('player');
-    this.step = 32;
     this.size = 32;
+    this.step = 32;
     this.x = 0;
     this.y = 0;
     this.maxCoordinate = playzoneSize - this.size;
-
+    
+    this.reference = document.getElementById('player');
     this.reference.style.height = this.size + 'px';
     this.reference.style.width = this.size + 'px';
   }
@@ -100,7 +100,7 @@ document.body.addEventListener('keydown', function (ev) {
       playzone.player.MoveLeft();
       playzone.IsCoinCollected();
     }
-    console.log('x =', player.x, typeof player.x);
+    console.log('x =', playzone.player.x, typeof playzone.player.x);
   } else if (ev.key === 'ArrowRight') {
     if (playzone.player.x < playzone.player.maxCoordinate) {
       playzone.player.MoveRight();
