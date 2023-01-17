@@ -91,25 +91,35 @@ const playzone = new Playzone();
 const player = new Player();
 const coin = new Coin(playzone.size, player.size);
 
+function IsCoinCollected(somePlayer, someCoin) {
+  if ((somePlayer.x === someCoin.x) && (somePlayer.y === someCoin.y)) {
+    someCoin.ChangePosition();
+  }
+}
+
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
     if (player.y > 0) {
       player.MoveUp();
+      IsCoinCollected(player, coin);
     }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowDown') {
     if (player.y < (playzone.size - player.size)) {
       player.MoveDown();
+      IsCoinCollected(player, coin);
     }
     console.log('y =', player.y, typeof player.y);
   } else if (ev.key === 'ArrowLeft') {
     if (player.x > 0) {
       player.MoveLeft();
+      IsCoinCollected(player, coin);
     }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
     if (player.x < (playzone.size - player.size)) {
       player.MoveRight();
+      IsCoinCollected(player, coin);
     }
     console.log('x =', player.x, typeof player.x);
   }
