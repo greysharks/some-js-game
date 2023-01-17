@@ -2,9 +2,16 @@ class Playzone {
   constructor() {
     this.reference = document.getElementById('playzone');
     this.size = 640;
+    this.player = new Player();
+    this.coin = new Coin(this.size, this.player.size);
 
     this.reference.style.height = this.size + 'px';
     this.reference.style.width = this.size + 'px';
+  }
+  IsCoinCollected() {
+    if ((this.player.x === this.coin.x) && (this.player.y === this.coin.y)) {
+      this.coin.ChangePosition();
+    }
   }
 }
 
@@ -81,46 +88,38 @@ class Coin {
     if (this.y > this.maxLength) {
       this.y = this.maxLength;
     }
-    
+
     this.reference.style.marginTop = this.y + 'px';
     this.reference.style.marginLeft = this.x + 'px';
   }
 }
 
 const playzone = new Playzone();
-const player = new Player();
-const coin = new Coin(playzone.size, player.size);
-
-function IsCoinCollected(somePlayer, someCoin) {
-  if ((somePlayer.x === someCoin.x) && (somePlayer.y === someCoin.y)) {
-    someCoin.ChangePosition();
-  }
-}
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
-    if (player.y > 0) {
-      player.MoveUp();
-      IsCoinCollected(player, coin);
+    if (playzone.player.y > 0) {
+      playzone.player.MoveUp();
+      playzone.IsCoinCollected();
     }
-    console.log('y =', player.y, typeof player.y);
+    console.log('y =', playzone.player.y, typeof playzone.player.y);
   } else if (ev.key === 'ArrowDown') {
-    if (player.y < (playzone.size - player.size)) {
-      player.MoveDown();
-      IsCoinCollected(player, coin);
+    if (playzone.player.y < (playzone.size - playzone.player.size)) {
+      playzone.player.MoveDown();
+      playzone.IsCoinCollected();
     }
-    console.log('y =', player.y, typeof player.y);
+    console.log('y =', playzone.player.y, typeof playzone.player.y);
   } else if (ev.key === 'ArrowLeft') {
-    if (player.x > 0) {
-      player.MoveLeft();
-      IsCoinCollected(player, coin);
+    if (playzone.player.x > 0) {
+      playzone.player.MoveLeft();
+      playzone.IsCoinCollected();
     }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
-    if (player.x < (playzone.size - player.size)) {
-      player.MoveRight();
-      IsCoinCollected(player, coin);
+    if (playzone.player.x < (playzone.size - playzone.player.size)) {
+      playzone.player.MoveRight();
+      playzone.IsCoinCollected();
     }
-    console.log('x =', player.x, typeof player.x);
+    console.log('x =', playzone.player.x, typeof playzone.player.x);
   }
 });
