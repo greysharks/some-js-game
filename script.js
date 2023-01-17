@@ -84,28 +84,44 @@ const playzone = new Playzone();
 
 document.body.addEventListener('keydown', function (ev) {
   if (ev.key === 'ArrowUp') {
-    if (playzone.player.y > 0) {
-      playzone.player.MoveUp();
-      playzone.IsCoinCollected();
-    }
+    const timer = setInterval(() => {
+      if (playzone.player.y > 0) {
+        playzone.player.MoveUp();
+        playzone.IsCoinCollected();
+      } else {
+        clearInterval(timer);
+      }
+    }, 500);
     console.log('y =', playzone.player.y, typeof playzone.player.y);
   } else if (ev.key === 'ArrowDown') {
-    if (playzone.player.y < playzone.player.maxCoordinate) {
-      playzone.player.MoveDown();
-      playzone.IsCoinCollected();
-    }
+    const timer = setInterval(() => {
+      if (playzone.player.y < playzone.player.maxCoordinate) {
+        playzone.player.MoveDown();
+        playzone.IsCoinCollected();
+      } else {
+        clearInterval(timer);
+      }
+    }, 500);
     console.log('y =', playzone.player.y, typeof playzone.player.y);
   } else if (ev.key === 'ArrowLeft') {
-    if (playzone.player.x > 0) {
-      playzone.player.MoveLeft();
-      playzone.IsCoinCollected();
-    }
+    const timer = setInterval(() => {
+      if (playzone.player.x > 0) {
+        playzone.player.MoveLeft();
+        playzone.IsCoinCollected();
+      } else {
+        clearInterval(timer);
+      }
+    }, 500);
     console.log('x =', playzone.player.x, typeof playzone.player.x);
   } else if (ev.key === 'ArrowRight') {
-    if (playzone.player.x < playzone.player.maxCoordinate) {
-      playzone.player.MoveRight();
-      playzone.IsCoinCollected();
-    }
+    const timer = setInterval(() => {
+      if (playzone.player.x < playzone.player.maxCoordinate) {
+        playzone.player.MoveRight();
+        playzone.IsCoinCollected();
+      } else {
+        clearInterval(timer);
+      }
+    }, 500);
     console.log('x =', playzone.player.x, typeof playzone.player.x);
   }
 });
