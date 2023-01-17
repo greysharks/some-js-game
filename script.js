@@ -2,7 +2,7 @@ class Playzone {
   constructor() {
     this.reference = document.getElementById('playzone');
     this.size = 640;
-    this.player = new Player();
+    this.player = new Player(this.size);
     this.coin = new Coin(this.size, this.player.size);
 
     this.reference.style.height = this.size + 'px';
@@ -16,12 +16,13 @@ class Playzone {
 }
 
 class Player {
-  constructor() {
+  constructor(playzoneSize) {
     this.reference = document.getElementById('player');
     this.step = 32;
     this.size = 32;
     this.x = 0;
     this.y = 0;
+    this.maxCoordinate = playzoneSize - this.size;
 
     this.reference.style.height = this.size + 'px';
     this.reference.style.width = this.size + 'px';
@@ -48,7 +49,7 @@ class Coin {
   constructor(playzoneSize, playerSize) {
     this.size = 12;
     this.step = playerSize;
-    this.maxLength = playzoneSize - this.size;
+    this.maxCoordinate = playzoneSize - this.size;
 
     // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
     this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
@@ -56,14 +57,6 @@ class Coin {
 
     this.x = this.step * this.coefficientForX;
     this.y = this.step * this.coefficientForY;
-
-    if (this.x > this.maxLength) {
-      this.x = this.maxLength;
-    }
-
-    if (this.y > this.maxLength) {
-      this.y = this.maxLength;
-    }
 
     this.reference = document.createElement('div');
     this.reference.style.backgroundColor = 'black';
@@ -81,14 +74,6 @@ class Coin {
     this.x = this.step * this.coefficientForX;
     this.y = this.step * this.coefficientForY;
 
-    if (this.x > this.maxLength) {
-      this.x = this.maxLength;
-    }
-
-    if (this.y > this.maxLength) {
-      this.y = this.maxLength;
-    }
-
     this.reference.style.marginTop = this.y + 'px';
     this.reference.style.marginLeft = this.x + 'px';
   }
@@ -104,7 +89,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('y =', playzone.player.y, typeof playzone.player.y);
   } else if (ev.key === 'ArrowDown') {
-    if (playzone.player.y < (playzone.size - playzone.player.size)) {
+    if (playzone.player.y < playzone.player.maxCoordinate) {
       playzone.player.MoveDown();
       playzone.IsCoinCollected();
     }
@@ -116,7 +101,7 @@ document.body.addEventListener('keydown', function (ev) {
     }
     console.log('x =', player.x, typeof player.x);
   } else if (ev.key === 'ArrowRight') {
-    if (playzone.player.x < (playzone.size - playzone.player.size)) {
+    if (playzone.player.x < playzone.player.maxCoordinate) {
       playzone.player.MoveRight();
       playzone.IsCoinCollected();
     }
