@@ -45,18 +45,23 @@ class Player {
   }
 }
 
+class Random {
+  constructor() {}
+  Random() {
+    // Generate random value between 0 and 20 (inclusively)
+    return Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
+  }
+}
+
 class Coin {
   constructor(playzoneSize, playerSize) {
     this.size = 12;
     this.step = playerSize;
     this.maxCoordinate = playzoneSize - this.size;
+    this.coefficient = new Random();
 
-    // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
-    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
-    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
-
-    this.x = this.step * this.coefficientForX;
-    this.y = this.step * this.coefficientForY;
+    this.x = this.step * this.coefficient.Random();
+    this.y = this.step * this.coefficient.Random();
 
     this.reference = document.createElement('div');
     this.reference.style.backgroundColor = 'black';
@@ -67,12 +72,8 @@ class Coin {
     document.getElementById('playzone').appendChild(this.reference);
   }
   ChangePosition() {
-    // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
-    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
-    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
-
-    this.x = this.step * this.coefficientForX;
-    this.y = this.step * this.coefficientForY;
+    this.x = this.step * this.coefficient.Random();
+    this.y = this.step * this.coefficient.Random();
 
     this.reference.style.marginTop = this.y + 'px';
     this.reference.style.marginLeft = this.x + 'px';
