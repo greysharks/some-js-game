@@ -40,14 +40,15 @@ class Player {
 class Coin {
   constructor(playzoneSize, playerSize) {
     this.size = 12;
+    this.step = playerSize;
     this.maxLength = playzoneSize - this.size;
 
     // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
     this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
     this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
 
-    this.x = playerSize * this.coefficientForX;
-    this.y = playerSize * this.coefficientForY;
+    this.x = this.step * this.coefficientForX;
+    this.y = this.step * this.coefficientForY;
 
     if (this.x > this.maxLength) {
       this.x = this.maxLength;
@@ -57,13 +58,32 @@ class Coin {
       this.y = this.maxLength;
     }
 
-    const coinDiv = document.createElement('div');
-    coinDiv.style.backgroundColor = 'black';
-    coinDiv.style.width = this.size + 'px';
-    coinDiv.style.height = this.size + 'px';
-    coinDiv.style.marginTop = this.y + 'px';
-    coinDiv.style.marginLeft = this.x + 'px';
-    document.getElementById('playzone').appendChild(coinDiv);
+    this.reference = document.createElement('div');
+    this.reference.style.backgroundColor = 'black';
+    this.reference.style.width = this.size + 'px';
+    this.reference.style.height = this.size + 'px';
+    this.reference.style.marginTop = this.y + 'px';
+    this.reference.style.marginLeft = this.x + 'px';
+    document.getElementById('playzone').appendChild(this.reference);
+  }
+  ChangePosition() {
+    // Generate two different coefficients for x and y with values between 0 and 20 (inclusively)
+    this.coefficientForX = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
+    this.coefficientForY = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + (Math.floor(Math.random() * 10) % 3);
+
+    this.x = this.step * this.coefficientForX;
+    this.y = this.step * this.coefficientForY;
+
+    if (this.x > this.maxLength) {
+      this.x = this.maxLength;
+    }
+
+    if (this.y > this.maxLength) {
+      this.y = this.maxLength;
+    }
+    
+    this.reference.style.marginTop = this.y + 'px';
+    this.reference.style.marginLeft = this.x + 'px';
   }
 }
 
